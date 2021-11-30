@@ -56,6 +56,15 @@ class Lottery
         $this->jogos = $jogos;
     }
 
+    public function gerarJogos()
+    {
+        for ($row = 0; $row < $this->totalJogos; $row++) {
+            $jogos[] = $this->gerarDezenas($this->quantidadeDezenas);
+        }
+var_dump($jogos);
+        $this->setJogos($jogos);
+    }
+
     private function verificaDezenas($dezena)
     {
         try {
@@ -81,7 +90,7 @@ class Lottery
         }
     }
 
-    private function geraDezenas()
+    private function gerarDezenas()
     {
         $array = [];
 
