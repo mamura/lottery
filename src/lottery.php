@@ -65,9 +65,8 @@ class Lottery
         $this->setJogos($jogos);
     }
 
-    public function realizaSorteio() : void
+    public function realizarSorteio() : void
     {
-
         $array = [];
 
         for ($i = 1; $i <= 6; $i++) {
@@ -78,6 +77,28 @@ class Lottery
         sort($array);
 
         $this->setResultado($array);
+    }
+
+    public function confereJogos() : string
+    {
+        $table = '<table>';
+        foreach ($this->getJogos() as $key => $jogo) {
+            $table .= '<tr><th colspan='.$this->quantidadeDezenas.'>Jogo ' . ($key+1) . '</th></tr>';
+            $table .= '<tr>';
+            foreach ($jogo as $j) {
+                if (in_array($j, $this->getResultado())) {
+                    $table .= '<td><s>' . $j . '</s></td>';
+                }
+                else {
+                    $table .= '<td>' . $j . '</td>';
+                }
+                
+            }
+            $table .= '</tr>';
+        }
+
+        $table .= '</table>';
+        return $table;
     }
 
     private function verificaDezenas($dezena) : int

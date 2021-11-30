@@ -1,5 +1,7 @@
 <?php
 require 'src/lottery.php';
 
-$lottery = new Lottery(6,6);
-var_dump($lottery->gerarJogos());
+$lottery = new Lottery(9,6);
+$lottery->gerarJogos();
+$lottery->realizarSorteio();
+echo ($lottery->confereJogos());
