@@ -1,0 +1,12 @@
+{
+    "name": "mamura/monetizze",
+    "description": "Test for Monetizze",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Mamura",
+            "email": "marcio.mota@gmail.com"
+        }
+    ],
+    "require": {}
+}
