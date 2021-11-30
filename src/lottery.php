@@ -56,16 +56,31 @@ class Lottery
         $this->jogos = $jogos;
     }
 
-    public function gerarJogos()
+    public function gerarJogos() : void
     {
         for ($row = 0; $row < $this->totalJogos; $row++) {
             $jogos[] = $this->gerarDezenas($this->quantidadeDezenas);
         }
-var_dump($jogos);
+
         $this->setJogos($jogos);
     }
 
-    private function verificaDezenas($dezena)
+    public function realizaSorteio() : void
+    {
+
+        $array = [];
+
+        for ($i = 1; $i <= 6; $i++) {
+            $valor = rand(1, 60);
+            (!in_array($valor, $array)) ? array_push($array, $valor) : $i--;
+        }
+
+        sort($array);
+
+        $this->setResultado($array);
+    }
+
+    private function verificaDezenas($dezena) : int
     {
         try {
             $dezena = filter_var(
