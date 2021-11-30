@@ -92,7 +92,6 @@ class Lottery
                 else {
                     $table .= '<td>' . $j . '</td>';
                 }
-                
             }
             $table .= '</tr>';
         }
