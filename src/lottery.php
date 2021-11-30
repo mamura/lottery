@@ -7,6 +7,15 @@ class Lottery
     private $totalJogos;
     private $jogos;
 
+    function __construct($quantidadeDezenas, $totalJogos)
+    {
+        if ($this->verificaDezenas($quantidadeDezenas)) {
+            $this->quantidadeDezenas = $quantidadeDezenas;
+        }
+
+        $this->totalJogos = $totalJogos;
+    }
+
     public function getQuantidadeDezenas()
     {
         return $this->quantidadeDezenas;
@@ -45,5 +54,30 @@ class Lottery
     public function setJogos($jogos)
     {
         $this->jogos = $jogos;
+    }
+
+    private function verificaDezenas($dezena)
+    {
+        try {
+            $dezena = filter_var(
+                $dezena,
+                FILTER_VALIDATE_INT,
+                [
+                    'options' => [
+                        'min_range' => 6,
+                        'max_range' => 10
+                    ]
+                ]
+            );
+
+            if ($dezena == false || $dezena == NULL) {
+                throw new Exception("Dezena Inválida!");
+            }
+
+            return $dezena;
+
+        } catch(Exception $e) {
+            echo $e->getMessage();
+        }
     }
 }
