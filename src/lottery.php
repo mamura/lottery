@@ -80,4 +80,17 @@ class Lottery
             echo $e->getMessage();
         }
     }
+
+    private function geraDezenas()
+    {
+        $array = [];
+
+        for ($i = 1; $i <= $this->quantidadeDezenas; $i++) {
+            $valor   =  rand(1, 60);
+            (!in_array($valor, $array)) ? array_push($array, $valor) : $i--;
+        }
+
+        sort($array);
+        return $array;
+    }
 }
